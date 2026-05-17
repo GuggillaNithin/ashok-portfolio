@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Palette, Search, Share2, ArrowRight } from 'lucide-react';
 
 export default function Services() {

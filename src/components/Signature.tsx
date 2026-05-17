@@ -1,52 +1,43 @@
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 export default function Signature({
   className = "",
+  layoutId,
 }: {
   className?: string;
+  layoutId?: string;
 }) {
   return (
     <motion.div
-      layoutId="navbar-logo"
-      initial={{
-        opacity: 0,
-        y: -10,
-      }}
-      animate={{
-        opacity: 1,
-        y: 0,
-      }}
+      layoutId={layoutId}
       transition={{
-        duration: 1,
-        ease: [0.22, 1, 0.36, 1],
+        type: "spring",
+        stiffness: 70,
+        damping: 20,
+        mass: 0.9,
       }}
       className={`
         font-signature
-        text-3xl
-        text-white
+        leading-none
         tracking-wide
         select-none
-        relative
         ${className}
       `}
+      style={{
+        willChange: "transform",
+        transform: "translate3d(0,0,0)",
+        backfaceVisibility: "hidden",
+        WebkitFontSmoothing: "antialiased",
+      }}
     >
-      <motion.span
-        initial={{
-          filter: "blur(10px)",
-          opacity: 0,
-        }}
-        animate={{
-          filter: "blur(0px)",
-          opacity: 1,
-        }}
-        transition={{
-          duration: 1.2,
-          delay: 0.2,
-        }}
-        className="drop-shadow-[0_0_10px_rgba(255,255,255,0.35)]"
+      <span
+        className="
+          block
+          drop-shadow-[0_0_10px_rgba(255,255,255,0.35)]
+        "
       >
         Ashok
-      </motion.span>
+      </span>
     </motion.div>
   );
 }

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AnimatePresence } from 'motion/react';
+import { LayoutGroup, AnimatePresence } from "framer-motion";
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -10,17 +10,19 @@ import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 import SplashScreen from './components/SplashScreen';
 
+
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
 
   return (
     <div className="min-h-screen selection:bg-brand-orange selection:text-white bg-bg-cream">
-      <AnimatePresence mode="wait">
+      <LayoutGroup>
+      <AnimatePresence>
         {showSplash && (
           <SplashScreen onComplete={() => setShowSplash(false)} />
         )}
       </AnimatePresence>
-      
+     
       {!showSplash && (
         <>
           <Navbar />
@@ -35,6 +37,7 @@ export default function App() {
           <WhatsAppButton />
         </>
       )}
+      </LayoutGroup>
     </div>
   );
 }

@@ -1,4 +1,52 @@
-import { motion } from 'motion/react';
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+
+function Typewriter({ lines }: { lines: string[] }) {
+  const [displayedText, setDisplayedText] = useState<string[]>(["", "", ""]);
+  const [lineIdx, setLineIdx] = useState(0);
+  const [charIdx, setCharIdx] = useState(0);
+
+  useEffect(() => {
+    if (lineIdx >= lines.length) return;
+
+    const currentLine = lines[lineIdx];
+    
+    if (charIdx < currentLine.length) {
+      const timer = setTimeout(() => {
+        setDisplayedText(prev => {
+          const next = [...prev];
+          next[lineIdx] = currentLine.slice(0, charIdx + 1);
+          return next;
+        });
+        setCharIdx(prev => prev + 1);
+      }, 70);
+      return () => clearTimeout(timer);
+    } else {
+      const timer = setTimeout(() => {
+        setLineIdx(prev => prev + 1);
+        setCharIdx(0);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [lineIdx, charIdx, lines]);
+
+  return (
+    <>
+      {displayedText[0]}
+      {lineIdx > 0 && <br />}
+      {displayedText[1]}
+      {(lineIdx > 1 || displayedText[2]) && <br />}
+      {displayedText[2]}
+      <motion.span
+        animate={{ opacity: [1, 0, 1] }}
+        transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
+        className="inline-block ml-1 text-brand-orange select-none"
+      >
+        |
+      </motion.span>
+    </>
+  );
+}
 
 export default function Hero() {
   return (
@@ -12,11 +60,9 @@ export default function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="text-6xl md:text-8xl font-display font-medium text-slate-900 leading-tight mb-6"
+              className="text-6xl md:text-8xl font-display font-medium text-slate-900 leading-tight mb-6 min-h-[220px] md:min-h-[300px]"
             >
-              Hey <br />
-              There, <br />
-              I'm Ashok
+              <Typewriter lines={["Hey", "There,", "I'm Ashok"]} />
             </motion.h1>
 
             <motion.p 
@@ -80,7 +126,7 @@ export default function Hero() {
                 <motion.img 
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.6 }}
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop" 
+                  src="/ashok.png"
                   alt="Ashok"
                   className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-500"
                 />

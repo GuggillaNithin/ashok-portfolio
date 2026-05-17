@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Phone } from 'lucide-react';
 import Signature from './Signature';
 
@@ -35,7 +35,7 @@ export default function Footer() {
               
               <div className="flex flex-col gap-4 items-start md:items-end">
                 <motion.a 
-                  href="https://wa.me/+918008015106"
+                  href="https://wa.me/918008015106?text=Hi%20Ashok%2C%20I%20came%20across%20your%20portfolio%20and%20really%20loved%20your%20work.%20I%E2%80%99d%20love%20to%20connect%20with%20you%20regarding%20a%20project%20opportunity."
                   whileHover={{ x: -5 }}
                   className="bg-[#25D366] text-white px-6 py-3 rounded-full font-bold flex items-center gap-3 shadow-lg hover:shadow-xl transition-all text-sm"
                 >
@@ -77,9 +77,11 @@ export default function Footer() {
             <span className="text-xs font-medium text-slate-400">© 2024. All Rights Reserved</span>
           </div>
           
-          <div className="text-xs font-medium text-slate-400">
-            Design by <span className="text-slate-900 font-bold">Oris Creative Agency</span>
-          </div>
+          <a className="cursor-pointer" href="https://nithinguggilla-portfolio.framer.website" target="_blank" rel="noopener noreferrer">
+            <div className="text-xs font-medium text-slate-400 hover:text-brand-orange transition-colors">
+              Design by <span className="text-slate-900 font-bold">Nithin G</span>
+            </div>
+          </a>
         </div>
       </div>
     </footer>

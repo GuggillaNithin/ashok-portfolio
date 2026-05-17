@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
 export default function Works() {
   const projects = [
@@ -6,7 +6,7 @@ export default function Works() {
       title: 'Search Dominance',
       category: 'SEO CAMPAIGNS',
       color: 'bg-amber-100',
-      image: 'https://images.unsplash.com/photo-1551288049-bbbda5366991?q=80&w=2070&auto=format&fit=crop'
+      image: '/1.png'
     },
     {
       title: 'Google Ads ROI',
@@ -18,7 +18,7 @@ export default function Works() {
       title: 'Social Growth',
       category: 'SMM',
       color: 'bg-rose-100',
-      image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1974&auto=format&fit=crop'
+      image: '/3.png'
     }
   ];
 

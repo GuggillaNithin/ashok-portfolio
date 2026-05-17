@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
 export default function WhatsAppButton() {
   const whatsappNumber = "+918008015106";
